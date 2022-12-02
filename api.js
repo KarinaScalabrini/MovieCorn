@@ -4,12 +4,18 @@ const language = "pt-BR";
 const api_key = "3388b3e3f87c5b6b0d1be607cd4a04d8";
 const api = 'https://api.themoviedb.org/3/search/movie/?api_key=';
 const urlImg = "https://image.tmdb.org/t/p/original/" ;
+const listPopular = "https://api.themoviedb.org/3/movie/popular?";
 
+
+
+// modal de login
+// função que faz modal de login aparecer 
 const fazerLogin = () => {
     $('.divnone').css("display","flex");
     $('#login').hide();
 };
-
+// botão de entrar no formulário
+// função ao clicar no botão de entrar no formulário, desaparecer os elementos.
 const entrar =  () => {
     const userId = $('form').find('#user').val();
     localStorage.setItem("user", userId );
@@ -18,7 +24,31 @@ const entrar =  () => {
 };
 
 
+const ListPopulares = () => {
+    fetch(listPopular + "api_key=" + api_key + "&language=" + language + "-" + region + "&page=1")
+    .then(function(response){
+        response.json().then(function(data){
 
+            let resultado = data.results;
+
+                var [{overview,
+                    poster_path,
+                    release_date,
+                    title 
+                }] = resultado;
+                resultado.map((film) => {
+                  let nome =  film.title
+                    console.log(nome);
+                })
+        })
+    }) 
+    .cath(error => console.log(error));
+    
+};
+//    https://api.themoviedb.org/3/movie/popular?api_key=3388b3e3f87c5b6b0d1be607cd4a04d8&language=pt-BR-BR
+
+// pesquisar filme por nome
+// função pesquisa o filme por nome e retorna o array com ids e atributos. 
 
 const pesquisarFilme = (filmePesquisa) => {
 
@@ -61,6 +91,8 @@ const pesquisarFilme = (filmePesquisa) => {
    
 
 $(function () {
+
+    ListPopulares();
 
     $('.btnLogin').on('click', function(){
         $('.loginForm').addClass('loginFrame');
