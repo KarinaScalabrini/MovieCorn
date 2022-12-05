@@ -23,6 +23,7 @@ const entrar =  () => {
     $('.loginForm').remove();
 };
 
+var cartaz = $('.cartazFront').clone();
 
 const ListPopulares = () => {
     fetch(listPopular + "api_key=" + api_key + "&language=" + language + "-" + region + "&page=1")
@@ -36,9 +37,10 @@ const ListPopulares = () => {
                     release_date,
                     title 
                 }] = resultado;
-                resultado.map((film) => {
-                  let nome =  film.title
-                    console.log(nome);
+
+                $(resultado).each(function(el, film){  
+                
+                  $('body').find('.amostraNew').append('<article class="cartazFront"><img class="front" src="' + urlImg + film.poster_path +'"><h2 class="titleAll">'+ film.title +'</h2><h5 class="date">'+ film.release_date +'</h5></article>');   
                 })
         })
     }) 
