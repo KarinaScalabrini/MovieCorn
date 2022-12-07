@@ -69,7 +69,7 @@ const pesquisarFilme = (filmePesquisa) => {
                     release_date,
                     title 
                 }] = resultado;
-
+                    console.log('resultado');
                 
 
                 const clonarPost = (el) => {
