@@ -5,6 +5,7 @@ const api_key = "3388b3e3f87c5b6b0d1be607cd4a04d8";
 const api = 'https://api.themoviedb.org/3/search/movie/?api_key=';
 const urlImg = "https://image.tmdb.org/t/p/original/" ;
 const listPopular = "https://api.themoviedb.org/3/movie/popular?";
+const emBreve = "https://api.themoviedb.org/3/movie/upcoming?api_key=3388b3e3f87c5b6b0d1be607cd4a04d8&language=pt-BR&page=1";
 
 
 
@@ -23,31 +24,54 @@ const entrar =  () => {
     $('.loginForm').remove();
 };
 
-var cartaz = $('.cartazFront').clone();
+function ListCartaz(resultado) {
+    fetch('https://api.themoviedb.org/3/movie/upcoming?api_key=3388b3e3f87c5b6b0d1be607cd4a04d8&language=pt-BR&page=1')
+    .then((response) => response.json())
+    .then((data) => {
+        movies(data);
+    })
+    .catch((error) => {
+        console.log('Error', error);
+    })
+}
 
-const ListPopulares = () => {
-    fetch(listPopular + "api_key=" + api_key + "&language=" + language + "-" + region + "&page=1")
-    .then(function(response){
-        response.json().then(function(data){
+function movies(data){
+    console.log(data);
+    let resultado = data.results;
+                 var [{overview,
+                     poster_path,
+                     release_date,
+                     title 
+                 }] = resultado;
+                 console.log(data)
+    $(resultado).each(function(el, film){  
+        
+        
+        $('body').find('.amostra').append('<article class="cartazFront"><img class="front" src="' + urlImg + film.poster_path +'"><h2 class="titleAll">'+ film.title +'</h2><h5 class="date">'+ film.release_date +'</h5></article>');   
+                });
+}
 
-            let resultado = data.results;
+ const ListPopulares = () => {
+     fetch(listPopular + "api_key=" + api_key + "&language=" + language + "-" + region + "&page=1")
+     .then(function(response){
+         response.json().then(function(data){
 
-                var [{overview,
-                    poster_path,
-                    release_date,
-                    title 
-                }] = resultado;
+             let resultado = data.results;
+                 var [{overview,
+                     poster_path,
+                     release_date,
+                     title 
+                 }] = resultado;
 
-                $(resultado).each(function(el, film){  
+                 $(resultado).each(function(el, film){  
                 
-                  $('body').find('.amostraNew').append('<article class="cartazFront"><img class="front" src="' + urlImg + film.poster_path +'"><h2 class="titleAll">'+ film.title +'</h2><h5 class="date">'+ film.release_date +'</h5></article>');   
-                })
-        })
-    }) 
-    .cath(error => console.log(error));
+                   $('body').find('.amostraNew').append('<article class="cartazFront"><img class="front" src="' + urlImg + film.poster_path +'"><h2 class="titleAll">'+ film.title +'</h2><h5 class="date">'+ film.release_date +'</h5></article>');   
+                 })
+         })
+     }) 
+     .cath(error => console.log(error));
     
-};
-//    https://api.themoviedb.org/3/movie/popular?api_key=3388b3e3f87c5b6b0d1be607cd4a04d8&language=pt-BR-BR
+ };
 
 // pesquisar filme por nome
 // função pesquisa o filme por nome e retorna o array com ids e atributos. 
@@ -55,9 +79,6 @@ const ListPopulares = () => {
 const pesquisarFilme = (filmePesquisa) => {
 
      $('.cartazFront').remove();
-
-        
-
          fetch(api + api_key + '&language=' + language + '&region=' + region + '&query=' + filmePesquisa )
          .then(function(response){
              response.json().then(function (data){
@@ -94,7 +115,9 @@ const pesquisarFilme = (filmePesquisa) => {
 
 $(function () {
 
+    ListCartaz();
     ListPopulares();
+
 
     $('.btnLogin').on('click', function(){
         $('.loginForm').addClass('loginFrame');

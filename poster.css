@@ -95,10 +95,7 @@ header{
     border-bottom:1px solid #ffd90071;
 }
 
-.front{
-    width:100%;
-    height:100%;
-}
+
 #search{
     width:4.5em;
     background-color: #ffd700;
@@ -151,8 +148,7 @@ main{
     border-radius:6px;
     background-color:#ffd900f3;
 }
-
-.amostraNew{
+.amostraNew, .amostra{
     max-width:100vw;
     min-height:45vh;
     margin:0 auto;
@@ -161,16 +157,21 @@ main{
     justify-content: center;
     align-items: center;
     gap:2rem;
-    margin-bottom:100px;
+    margin-bottom:30px;
     
 
 
 
 }
+.front{
+    width:100%;
+    height:70%;
+}
 .cartazFront{
-    height:40vh;
+    height:45vh;
     width:12%;
     margin-bottom:110px;
+    background-color: #060606a7;
 }
 
 .title{
@@ -233,8 +234,9 @@ li{
 .titleAll{
     padding-top:10px;
     padding-left:5px;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     color:rgba(245, 245, 220, 0.878);
+    margin-bottom:2px;
 }
 .cartazFront > p , h5 {
     color:rgba(211, 207, 207, 0.713);
@@ -305,6 +307,7 @@ form > input:focus{
 }
 .date{
     font-size:1rem;
+    padding-left:5px;
 }
 .bi-twitter{
     background:#1DA1F2; 
