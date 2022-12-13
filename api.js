@@ -5,18 +5,16 @@ const api_key = "3388b3e3f87c5b6b0d1be607cd4a04d8";
 const api = 'https://api.themoviedb.org/3/search/movie/?api_key=';
 const urlImg = "https://image.tmdb.org/t/p/original/" ;
 const listPopular = "https://api.themoviedb.org/3/movie/popular?";
-const emBreve = "https://api.themoviedb.org/3/movie/upcoming?api_key=3388b3e3f87c5b6b0d1be607cd4a04d8&language=pt-BR&page=1";
+const emBreve = "https://api.themoviedb.org/3/movie/upcoming?";
 
 
 
 // modal de login
-// função que faz modal de login aparecer 
 const fazerLogin = () => {
     $('.divnone').css("display","flex");
     $('#login').hide();
 };
-// botão de entrar no formulário
-// função ao clicar no botão de entrar no formulário, desaparecer os elementos.
+// função de entrar no formulário
 const entrar =  () => {
     const userId = $('form').find('#user').val();
     localStorage.setItem("user", userId );
@@ -24,54 +22,51 @@ const entrar =  () => {
     $('.loginForm').remove();
 };
 
-function ListCartaz(resultado) {
-    fetch('https://api.themoviedb.org/3/movie/upcoming?api_key=3388b3e3f87c5b6b0d1be607cd4a04d8&language=pt-BR&page=1')
-    .then((response) => response.json())
-    .then((data) => {
-        movies(data);
-    })
-    .catch((error) => {
-        console.log('Error', error);
-    })
-}
-
-function movies(data){
-    console.log(data);
-    let resultado = data.results;
-                 var [{overview,
-                     poster_path,
-                     release_date,
-                     title 
-                 }] = resultado;
-                 console.log(data)
-    $(resultado).each(function(el, film){  
-        
-        
-        $('body').find('.amostra').append('<article class="cartazFront"><img class="front" src="' + urlImg + film.poster_path +'"><h2 class="titleAll">'+ film.title +'</h2><h5 class="date">'+ film.release_date +'</h5></article>');   
-                });
-}
-
- const ListPopulares = () => {
-     fetch(listPopular + "api_key=" + api_key + "&language=" + language + "-" + region + "&page=1")
-     .then(function(response){
-         response.json().then(function(data){
-
-             let resultado = data.results;
-                 var [{overview,
-                     poster_path,
-                     release_date,
-                     title 
-                 }] = resultado;
-
-                 $(resultado).each(function(el, film){  
-                
-                   $('body').find('.amostraNew').append('<article class="cartazFront"><img class="front" src="' + urlImg + film.poster_path +'"><h2 class="titleAll">'+ film.title +'</h2><h5 class="date">'+ film.release_date +'</h5></article>');   
-                 })
-         })
-     }) 
-     .cath(error => console.log(error));
+const viewMovie = (data, section) => {
     
- };
+    let populateSection = section;
+    let resultado = data.results;
+
+    var [{overview,
+        poster_path,
+        release_date,
+        title 
+    }] = resultado;
+
+    if(populateSection == ".section1"){
+        $(resultado).each(function(el, film){  
+   
+            $('body').find('.section1').append('<article class="cartazFront"><img class="front" src="' + urlImg + film.poster_path +'"><h2 class="titleAll">'+ film.title +'</h2><h5 class="date">'+ film.release_date +'</h5></article>');   
+          })
+    }if (populateSection == ".section2"){
+        $(resultado).each(function(el, film){  
+   
+            $('body').find('.section2').append('<article class="cartazFront"><img class="front" src="' + urlImg + film.poster_path +'"><h2 class="titleAll">'+ film.title +'</h2><h5 class="date">'+ film.release_date +'</h5></article>');   
+          })
+    }
+
+    const populate = (section, resultado) => {
+        debugger
+        
+    }
+
+}
+
+ async function listar(url, section) { 
+
+    let response = await fetch(url + "api_key=" + api_key + "&language=" + language + "-" + region + "&page=1")
+    let result = await response.json();
+
+    switch (section){
+        case "emBreve" :
+            viewMovie(result , ".section2");
+            break;
+        case "listPopular" :
+            viewMovie(result , ".section1");    
+            break;
+    }          
+}
+     
 
 // pesquisar filme por nome
 // função pesquisa o filme por nome e retorna o array com ids e atributos. 
@@ -83,6 +78,7 @@ const pesquisarFilme = (filmePesquisa) => {
          .then(function(response){
              response.json().then(function (data){
 
+                viewMovie();
                 let resultado = data.results;
 
                 var [{overview,
@@ -115,35 +111,26 @@ const pesquisarFilme = (filmePesquisa) => {
 
 $(function () {
 
-    ListCartaz();
-    ListPopulares();
-
+    listar(emBreve, "emBreve");
+    listar(listPopular, "listPopular");
 
     $('.btnLogin').on('click', function(){
         $('.loginForm').addClass('loginFrame');
         setTimeout(function(){
             entrar();
-        }, 1000);
-        
-        
+        }, 1000);  
     });
-
-    $('.bi-brightness-high').on('click', function(){
-        
-    });
-    
-
 
     $('#pesquisarTittle').on('click', function(){
+
         let filmePesquisa =  $('#title').val();
-        pesquisarFilme(filmePesquisa);
-        
+        pesquisarFilme(filmePesquisa);   
     });
 
     $("#search").on('click', function (){
+
         $(this).remove();
         $("#pesquisa").css("display", "flex");
-
     });
 
     $('#login').on('click', function(){
