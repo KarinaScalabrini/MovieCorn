@@ -53,11 +53,12 @@ form > h1{
 .divnone{
     z-index:99999999999999999999999;
     position: absolute;
-    width:98vw;
-    height:98vh;
+    width:100vw;
+    height:100vh;
     display:none;
     justify-content: center;
     align-items: center;
+    background-color:rgba(0, 0, 0, 0.645);
     
     
 }
@@ -103,7 +104,7 @@ input{
     padding-left:20px;
     border:none;
     background-color: none;
-}
+} 
 input:focus{
     width:90%;
     height:40px; 
@@ -236,10 +237,11 @@ form > label{
 form > input{
     width:100%;
     border-radius:6px; 
+    border:1px solid #ffd700!important;
     height:9%;
-    font-size:8%;
+    font-size:1.2rem;
     color: #C0C0C0;
-    background:rgb(8, 8, 8);
+    background:rgb(8, 8, 8)!important;
 }
 form > input:focus{
     width:100%;
@@ -390,20 +392,126 @@ form{
     .logo{
         font-size:1.5em;
     }
+    .logoHeader{
+        margin:8px 0px 0px 8px;
+    }
+    .logoHeader > i{
+        font-size:25px;
+    }
+    .logoHeader > span{
+        font-size:25px;
+    }
     .bi-film{
         font-size:1.8em
     }
     .headerForm{
         padding:0px;
         display:flex;
-        justify-content: space-around;
-        margin-top:0.8em;
+        width:95%;
+        justify-content: space-between;
+        margin: 0px 15px 0px 10px 
         
     }
     #login{
-        width:4.7rem;
-        font-size:1em;
-        height:2.2rem;
+        width:4.3rem;
+        font-size:0.8em;
+        height:2rem;
+        padding-top:6px;
+        margin:8px 8px 0px 0px;
+        background-color: #ffd900;
 
+    }
+    header{
+        margin:20px 0px;
+    }
+    header > ul{
+        padding:0px;
+    }
+    .titleDestaque{
+        font-size:1.1rem;
+        padding-left:5px;
+        margin-top:40px;
+    }
+    #pesquisa{
+        position:absolute;
+        height:32px;
+        width:90%;
+        margin-left:15px;
+    }
+    #pesquisa > input{
+        padding-left:9px;
+    }
+    #pesquisa > span{
+        position:absolute;
+        top:0px;
+        font-size:17px;
+        padding-left:7px;
+    }
+    .cartazFront{
+        height: 23vh!important;
+        width: 25%;
+        margin-bottom: 35px;
+        background-color: #060606c9;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+    .titleAll{
+        padding-top: 7px;
+        padding-left: 5px;
+        font-size: 0.8rem;
+        margin-bottom: 2px;
+    }
+    .date{
+        font-size: 0.7rem;
+    }
+    .section1, .section2{
+        gap:1rem;
+    }
+    .titleArticle{
+        font-size:1.1rem;
+    }
+    footer{
+        height:5rem
+    }
+    footer > .logo{
+        font-size:20px;
+    }
+    footer > .bi-film{
+        font-size:18px;
+    }
+    .ulFooter{
+        display:none;
+    }
+    .ulFooter2{
+        padding:0px;
+        width:30vw;
+        margin-bottom:0px;
+    }
+    .ulFooter2 > li{
+        font-size:15px;
+    }
+    .bi-r-circle{
+        font-size:10px;
+    }
+    .divnone{
+        height:100vh;
+        margin:0px;
+        width:100vw;
+        background-color:rgba(0, 0, 0, 0.645);
+        overflow:hidden;
+    }
+    .loginForm{
+        width: 80%;
+    height: 70%;
+    min-height: 600px;
+    background: rgba(0, 0, 17, 0.966);
+    border-radius: 10px;
+    }
+    form > h1{
+        font-size:1.8rem;
+        padding-top:60px;
+        text-align:center;
+        margin-bottom:3rem;
     }
 }
