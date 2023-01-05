@@ -27,28 +27,27 @@ const viewMovie = (data, section) => {
     let populateSection = section;
     let resultado = data.results;
 
-    var [{overview,
-        poster_path,
-        release_date,
-        title 
-    }] = resultado;
-
+    console.log(resultado)
     if(populateSection == ".section1"){
         $(resultado).each(function(el, film){  
    
-            $('body').find('.section1').append('<article class="cartazFront"><img class="front" src="' + urlImg + film.poster_path +'"><h2 class="titleAll">'+ film.title +'</h2><h5 class="date">'+ film.release_date +'</h5></article>');   
+            $('body').find('.section1').append('<article class="cartazFront"><img class="front" src="' + urlImg + film.poster_path +'"></article>');   
           })
+          return
     }if (populateSection == ".section2"){
         $(resultado).each(function(el, film){  
    
-            $('body').find('.section2').append('<article class="cartazFront"><img class="front" src="' + urlImg + film.poster_path +'"><h2 class="titleAll">'+ film.title +'</h2><h5 class="date">'+ film.release_date +'</h5></article>');   
+            $('body').find('.section2').append('<article class="cartazFront"><img class="front" src="' + urlImg + film.poster_path +'"></article>');   
           })
+          return
+    } if(populateSection == ".sectionPesquisa"){
+        $(resultado).each(function(el, film){  
+   
+            $('body').find('.sectionPesquisa').append('<article class="cartazFront"><img class="front" src="' + urlImg + film.poster_path +'"></article>');   
+          })
+          return
     }
 
-    const populate = (section, resultado) => {
-        debugger
-        
-    }
 
 }
 
@@ -71,43 +70,15 @@ const viewMovie = (data, section) => {
 // pesquisar filme por nome
 // função pesquisa o filme por nome e retorna o array com ids e atributos. 
 
-const pesquisarFilme = (filmePesquisa) => {
+async function pesquisarFilme(filmePesquisa) { 
 
-     $('.cartazFront').remove();
-         fetch(api + api_key + '&language=' + language + '&region=' + region + '&query=' + filmePesquisa )
-         .then(function(response){
-             response.json().then(function (data){
+    let response = await fetch(api + api_key + '&language=' + language + '&region=' + region + '&query=' + filmePesquisa)
+    let result = await response.json();
+    viewMovie(result , '.sectionPesquisa');
+}
 
-                viewMovie();
-                let resultado = data.results;
-
-                var [{overview,
-                    poster_path,
-                    release_date,
-                    title 
-                }] = resultado;
-                    console.log('resultado');
-                
-
-                const clonarPost = (el) => {
-                    var elemento = el;
-                    $("#amostra").append('<article class="cartazFront"><img class="front" src="' + urlImg + el.poster_path +'"/><h2 class="titleAll">'+ el.title +'</h2></article>');
-
-                   }
-
-                resultado.forEach(clonarPost);
-                
-
-                
-                
-
-            });
-         })
-         .cath(error => console.log(error));
-    
-     };
-     
    
+// falta limpar a pesquisa parar realizar outra
 
 $(function () {
 
@@ -115,6 +86,9 @@ $(function () {
     listar(listPopular, "listPopular");
 
     $('.btnLogin').on('click', function(){
+        const usuario = $('#user').val();
+        
+        localStorage.setItem("user", usuario);
         $('.loginForm').addClass('loginFrame');
         setTimeout(function(){
             entrar();
@@ -122,9 +96,9 @@ $(function () {
     });
 
     $('#pesquisarTittle').on('click', function(){
-
+        $('.sectionPesquisa').css("display","flex");
         let filmePesquisa =  $('#title').val();
-        pesquisarFilme(filmePesquisa);   
+        pesquisarFilme(filmePesquisa);
     });
 
     $("#search").on('click', function (){
@@ -134,6 +108,7 @@ $(function () {
     });
 
     $('#login').on('click', function(){
+       
         fazerLogin();
     });
    

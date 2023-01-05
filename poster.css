@@ -37,13 +37,14 @@ form > h1{
     /* position:absolute; */
     text-align: center;
     align-items: center;
-    padding:5px;
-    width:110px;
+    width:115px;
     height:45px;
-    background-color: #ffd700;
-    color:black;
-    font-size: 22px;
-    font-weight: 600;
+    padding:2px 8px 5px 8px;
+    background-color:rgba(0, 0, 0, 0.452) ;
+    color:#ffd900;
+    font-size: 20px;
+    font-weight: normal;
+    border:4px solid rgb(62, 11, 110);
     border-radius:8px;
     right:25px;
     top:25px;
@@ -143,13 +144,42 @@ main{
     background-color:#070707f3 ;
     border-right:1px solid rgba(255, 255, 255, 0.064);
     font-size:1rem;
-    color:rgba(255, 255, 255, 0.064);
+    font-weight:normal;
+    color:rgba(255, 255, 255, 0.872);
     margin-left:3px;
 
 }
-#pesquisa{
-    width:35%;
+.inputPesquisa:focus,
+.inputPesquisa:hover
+{
+    background-color:#070707f3 ;
+    border-right:1px solid rgba(255, 255, 255, 0.064);
+    font-size:1rem;
+    font-weight:normal;
+    color:rgba(255, 255, 255, 0.872);
+    margin-left:3px;
+
+}
+.navPesquisa{
+
+    width:70%;
+    height: 18vh;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+    margin:65px auto;
+}
+.titlePesquisa{
+    font-size:50px;
+    max-height:50px;
+    color:rgb(62, 11, 110);
+}
+
+ #pesquisa{
+    width:55%;
     height:40px;
+    display:flex;
     flex-direction: row;
     justify-content: space-between;
     margin-top:1.4em;
@@ -158,8 +188,19 @@ main{
     border-radius:6px;
     border:1px solid rgba(255, 255, 255, 0.064);
     background-color:#070707f3;
+} 
+.sectionPesquisa{
+    max-width:100vw;
+    min-height:45vh;
+    margin:0 auto;
+    display:none;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap:1rem;
+    margin-bottom:30px;
 }
-.section1, .section2{
+.section1, .section2 {
     max-width:100vw;
     min-height:45vh;
     margin:0 auto;
@@ -167,22 +208,25 @@ main{
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap:2rem;
+    gap:1rem;
     margin-bottom:30px;
-    
-
-
-
 }
 .front{
     width:100%;
-    height:70%;
+    height:100%;
 }
 .cartazFront{
-    height:45vh;
+    height:35vh;
     width:12%;
-    margin-bottom:25px;
     background-color: #060606c9;
+    transition: 0.4s;
+}
+.cartazFront:hover,
+.cartazFront:focus
+{
+    height:38vh;
+    width:15%;
+    border:4px solid rgb(62, 11, 110);;
 }
 .year, .describle{
     height:10px;
@@ -320,7 +364,7 @@ footer{
     justify-content: space-around;
     align-items: center;
     color:#c0c0c0ba;
-    background-color:rgba(1, 1, 3, 0.908) ;
+    background-color:rgb(6, 0, 11); ;
 
 }
 footer li >  .bi {

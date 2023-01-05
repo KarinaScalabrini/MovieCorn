@@ -13,10 +13,9 @@
    <link href="poster.css" rel="stylesheet"/>
 </head>
 <body>
-    <div class="divnone">
-   <div class="loginForm">
-
-
+  <div class="divnone">
+    <!--modal de login-->
+    <div class="loginForm">
       <form>
         <h1 >ENTRAR</h1>
         <label  for="name" class="label">Usuário:</label></br>
@@ -33,7 +32,8 @@
       </form>
 
    </div>
-</div>
+   <!--fim modal e início carousel-->  
+  </div>
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <div class="headerForm">
             <p class="logoHeader"><i class="bi bi-film"></i><span class="logo">MOVIECORN</span></p>
@@ -69,26 +69,24 @@ https://i0.wp.com/cloud.estacaonerd.com/wp-content/uploads/2020/07/29192116/Estr
         <span class="sr-only">Próximo</span>
       </a>
     </div>
-    <main>
-        <header>
-            <ul>
-            <li class="titleDestaque">Filmes em Destaque:</li>
-            <li id="pesquisa">
-              <input type="text" class="inputPesquisa" id="title" placeholder="Digite o filme que deseja encontrar"/>
-              <span id="pesquisarTittle" class="bi searchInput bi-search">
-            </span>
-      
-            </li>
-            </ul>
-            
-            
-        </header>
-    </main>
+    <!--fim carousel e início campo de busca-->
+    <nav class="navPesquisa">
+      <h1 class="titlePesquisa">Os Melhores Filmes Você Encontra Aqui</h1>
+      <div id="pesquisa">
+        <input type="text" class="inputPesquisa" id="title" placeholder="Digite o filme que deseja encontrar"/><span id="pesquisarTittle" class="bi searchInput bi-search">
+            </span>  
+          </div>      
+    </nav>   
+  
+    <section class="sectionPesquisa"></section>
 
+    <h1 class="titleArticle">Filmes em Destaque:</h1>
     <section  class="section1" ></section>
 
     <h1 class="titleArticle">Filmes em Cartaz:</h1>
     <section class="section2" ></section>
+
+    <!-- vídeo no final da página-->
     <div class="video">
       <iframe  src="https://www.youtube.com/embed/OIqSZOMMhHY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
