@@ -19,9 +19,10 @@
       <form>
         <h1 >ENTRAR</h1>
         <label  for="name" class="label">Usuário:</label></br>
-        <input type="text" name="name" placeholder="Digite o seu nome..." id="user"/></br>
+        <input type="text"  class="inputLogin"name="name" placeholder="Digite o seu nome..." id="user"/></br></br>
         <label  for="password" class="label">Password:</label></br>
-        <input type="password" name="password"/></br></br>
+        
+        <input type="password" class="inputLogin" name="password"/>
         <p class="recuperar">Recuperar Senha</p>
         <button class="btnLogin" >ENTRAR</button>
         <p class="elLogin" >
@@ -50,14 +51,13 @@
       <div class="carousel-inner">
         <div class="carousel-item active">
           <img class="d-block w-100" src="
-https://i0.wp.com/cloud.estacaonerd.com/wp-content/uploads/2020/07/29192116/Estreia-coringa-nos-cinemas.png?fit=1000%2C800&ssl=1" alt="Primeiro Slide">
+          https://independente.com.br/wp-content/uploads/2019/11/maxresdefault1.jpg" alt="Primeiro Slide">
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/star/CF75B504464DC7DFBA36A3F1F59D47ADDC7A914AE99095793C9C55B5780D123C/scale?width=1200&aspectRatio=1.78&format=jpeg
-          " alt="Segundo Slide">
+          <img class="d-block w-100" src="https://ecdn.game4v.com/g4v-content/uploads/2021/10/02084415/Venom-Let-There-Be-Carnage-1-game4v-1633139055-37.jpeg" alt="Segundo Slide">
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/CD95B5409EA8B4987A467BADB3E0925FFFBB67665D18F8DE67E9E76967EBAE16/scale?width=1200&aspectRatio=1.78&format=jpeg" alt="Terceiro Slide">
+          <img class="d-block w-100" src="https://wallpaperaccess.com/full/37946.jpg" alt="Terceiro Slide">
         </div>
       </div>
       <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -71,25 +71,63 @@ https://i0.wp.com/cloud.estacaonerd.com/wp-content/uploads/2020/07/29192116/Estr
     </div>
     <!--fim carousel e início campo de busca-->
     <nav class="navPesquisa">
-      <h1 class="titlePesquisa">Os Melhores Filmes Você Encontra Aqui</h1>
+      <h1 class="titlePesquisa">OS MELHORES FILMES VOCÊ ENCONTRA AQUI</h1>
       <div id="pesquisa">
         <input type="text" class="inputPesquisa" id="title" placeholder="Digite o filme que deseja encontrar"/><span id="pesquisarTittle" class="bi searchInput bi-search">
             </span>  
           </div>      
     </nav>   
   
-    <section class="sectionPesquisa"></section>
+    <!-- pesquisa de filmes-->
+    <div class=" d-none container">
+      <section class=" sectionPesquisa"></section>
+    </div>
 
     <h1 class="titleArticle">Filmes em Destaque:</h1>
-    <section  class="section1" ></section>
+    <div class="container">
+      <section  class="section1" ></section>
+    </div>
+    
+      <!-- vídeo no final da página-->
+      <div class="containerVideo">
+        
+        <div class="video">
+          <h3>Trailers </h3>
+          <iframe  src="https://www.youtube.com/embed/OIqSZOMMhHY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe  src="https://www.youtube.com/embed/4vi6ZWe_3Yc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <iframe  src="https://www.youtube.com/embed/b0zPraLuaCA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <iframe  src="https://www.youtube.com/embed/OnZAUm4iLPg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          
+        </div>
+      </div>
 
     <h1 class="titleArticle">Filmes em Cartaz:</h1>
-    <section class="section2" ></section>
-
-    <!-- vídeo no final da página-->
-    <div class="video">
-      <iframe  src="https://www.youtube.com/embed/OIqSZOMMhHY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div class="container">
+      <section class="section2" ></section>
     </div>
+    
+    <section class="menu">
+      <!-- <img src="./fundo.jpg"/> -->
+      <h3 class="titleAssinar">ESCOLHA SEU PLANO</h3>
+      <article class="articleMenu">
+        <ul>
+          
+          <li>Assista quando quiser</li>
+          <li>Assista no celular, tablet, Smart TV ou notebook.</li>
+          <li>
+            <button class="btn-menu">ASSINAR</button>
+          </li>
+          
+        </ul>
+        <ul>
+          <li>Baixe séries para assistir offline.</li>
+          <li>Grande catálogo de filmes, documentários, séries e muito mais.</li>
+          <li> Assista o quanto quiser, quando quiser.</li>
+        </ul>
+      </article>
+    </section>
+    
+    
    
 
     <footer>

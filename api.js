@@ -15,19 +15,13 @@ const fazerLogin = () => {
     $('#login').hide();
 };
 // função de entrar no formulário
-const entrar =  () => {
-    const userId = $('form').find('#user').val();
-    localStorage.setItem("user", userId );
-    
-    $('.loginForm').remove();
-};
+
 
 const viewMovie = (data, section) => {
     
     let populateSection = section;
     let resultado = data.results;
 
-    console.log(resultado)
     if(populateSection == ".section1"){
         $(resultado).each(function(el, film){  
    
@@ -85,19 +79,26 @@ $(function () {
     listar(emBreve, "emBreve");
     listar(listPopular, "listPopular");
 
-    $('.btnLogin').on('click', function(){
+    $('.btnLogin').on('click', function(e){
+        e.preventDefault();
         const usuario = $('#user').val();
-        
         localStorage.setItem("user", usuario);
+        var user = localStorage.getItem("user");
+        
+        $('.loginForm').find('form').remove();
+        $('.loginForm').html('<span class="textForm"> Bem-vindo de volta <span class="textForm2">'+ user + '</span></span>');
         $('.loginForm').addClass('loginFrame');
         setTimeout(function(){
-            entrar();
-        }, 1000);  
+            $('.divnone').hide();
+        }, 2000);  
     });
 
     $('#pesquisarTittle').on('click', function(){
-        $('.sectionPesquisa').css("display","flex");
+        $('.sectionPesquisa').find('article').remove();
+        $('.sectionPesquisa').show();
+
         let filmePesquisa =  $('#title').val();
+        $('.container').removeClass('d-none');
         pesquisarFilme(filmePesquisa);
     });
 
