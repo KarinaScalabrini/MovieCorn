@@ -66,7 +66,7 @@ const viewMovie = (data, section) => {
 
 async function pesquisarFilme(filmePesquisa) { 
 
-    let response = await fetch(api + api_key + '&language=' + language + '&region=' + region + '&query=' + filmePesquisa)
+    let response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=3388b3e3f87c5b6b0d1be607cd4a04d8&query=${filmePesquisa}&page=1`);
     let result = await response.json();
     viewMovie(result , '.sectionPesquisa');
 }
